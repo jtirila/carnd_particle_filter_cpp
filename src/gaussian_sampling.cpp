@@ -22,24 +22,28 @@ void printSamples(double gps_x, double gps_y, double theta) {
   double std_x, std_y, std_theta; // Standard deviations for x, y, and theta
 
   // TODO: Set standard deviations for x, y, and theta.
-
+  std_x = 2.0;
+  std_y = 2.0;
+  std_theta = 0.05;
 
 
   // This line creates a normal (Gaussian) distribution for x.
-  normal_distribution<double> dist_x(gps_x, std_x);
-
   // TODO: Create normal distributions for y and theta.
+  normal_distribution<double> dist_x(gps_x, std_x);
+  normal_distribution<double> dist_y(gps_y, std_y);
+  normal_distribution<double> dist_theta(theta, std_theta);
 
 
 
   for (int i = 0; i < 3; ++i) {
     double sample_x, sample_y, sample_theta;
 
+
     // TODO: Sample  and from these normal distrubtions like this:
-    // sample_x = dist_x(gen);
+    sample_x = dist_x(gen);
+    sample_y = dist_y(gen);
+    sample_theta = dist_theta(gen);
     // where "gen" is the random engine initialized earlier.
-
-
 
     // Print your samples to the terminal.
     cout << "Sample " << i + 1 << " " << sample_x << " " << sample_y << " " << sample_theta << endl;
